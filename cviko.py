@@ -29,3 +29,4 @@ def my_zip(*iterables):
 if __name__ == "__main__":
     print(my_enumerate("ahoj"))
     print (my_range(1,10,2))
+    print(list(zip([1,2,3], [4,5,6], [7,8,9], [10,11,12], ["a", "b", "c"])))
