@@ -1,28 +1,102 @@
 def cislo_text(cislo):
-    jednotky = ["nula", "jedna", "dva", "tři", "čtyři", "pět", "šest", "sedm", "osm", "devět"]
-    desítky = ["", "", "dvacet", "třicet", "čtyřicet", "padesát", "šedesát", "sedmdesát", "osmdesát", "devadesát"]
-    nepravidelne = ["", "jeden", "dva", "tři", "čtyři", "pět", "šest", "sedm", "osm", "devět"]
-
-    if 0 <= cislo < 10:
-        return jednotky[cislo]
-    elif 10 <= cislo < 20:
-        return ["deset", "jedenáct", "dvanáct", "třináct", "čtrnáct", "patnáct", "šestnáct", "sedmnáct", "osmnáct", "devatenáct"][cislo - 10]
-    elif 20 <= cislo < 100:
-        desitky_index = cislo // 10
-        jednotky_index = cislo % 10
-        if jednotky_index == 0:
-            return desítky[desitky_index]
-        else:
-            return desítky[desitky_index] + " " + jednotky[jednotky_index]
-    elif cislo == 100:
+    delka_cislo=len(cislo)
+    if(delka_cislo==3):
         return "sto"
-    else:
-        return "Číslo mimo rozsah"  # Pro rozšíření o větší čísla
+    
+    cislo_list=[]
+    for x in str(cislo):
+        cislo_list.append(x)
 
-# Příklady použití
-print(cislo_text(0))    # "nula"
-print(cislo_text(1))    # "jedna"
-print(cislo_text(15))   # "patnáct"
-print(cislo_text(25))   # "dvacet pět"
-print(cislo_text(100))  # "sto"
+    final_str=[]
+    if(delka_cislo==2):
+        if(cislo_list[0]=="2"):
+            final_str.append("dvacet ")
+        if(cislo_list[0]=="3"):
+            final_str.append("třicet ")
+        if(cislo_list[0]=="4"):
+            final_str.append("čtyřicet ")
+        if(cislo_list[0]=="5"):
+            final_str.append("padesát ")
+        if(cislo_list[0]=="6"):
+            final_str.append("šedesát ")
+        if(cislo_list[0]=="7"):
+            final_str.append("sedmdesát ")
+        if(cislo_list[0]=="8"):
+            final_str.append("osmdesát ")
+        if(cislo_list[0]=="9"):
+            final_str.append("devadesát ")
 
+        if(cislo_list[0]!="1"):
+            if(cislo_list[1]=="1"):
+                final_str.append("jedna")
+            if(cislo_list[1]=="2"):
+                final_str.append("dva")
+            if(cislo_list[1]=="3"):
+                final_str.append("tři")
+            if(cislo_list[1]=="4"):
+                final_str.append("čtyři")
+            if(cislo_list[1]=="5"):
+                final_str.append("pět")
+            if(cislo_list[1]=="6"):
+                final_str.append("šest")
+            if(cislo_list[1]=="7"):
+                final_str.append("sedm")
+            if(cislo_list[1]=="8"):
+                final_str.append("osm")
+            if(cislo_list[1]=="9"):
+                final_str.append("devět")
+
+        elif(cislo_list[0]=="1"):
+            if(cislo_list[1]=="0"):
+                final_str.append("deset")
+            if(cislo_list[1]=="1"):
+                final_str.append("jedenáct")
+            if(cislo_list[1]=="2"):
+                final_str.append("dvanáct")
+            if(cislo_list[1]=="3"):
+                final_str.append("třináct")
+            if(cislo_list[1]=="4"):
+                final_str.append("čtrnáct")
+            if(cislo_list[1]=="5"):
+                final_str.append("patnáct")
+            if(cislo_list[1]=="6"):
+                final_str.append("šestnáct")
+            if(cislo_list[1]=="7"):
+                final_str.append("sedmnáct")
+            if(cislo_list[1]=="8"):
+                final_str.append("osmnáct")
+            if(cislo_list[1]=="9"):
+                final_str.append("devatenáct")
+
+    
+
+            
+
+    if(delka_cislo==1):
+        if(cislo_list[0]=="0"):
+            final_str.append("nula")
+        if(cislo_list[0]=="1"):
+            final_str.append("jedna")
+        if(cislo_list[0]=="2"):
+            final_str.append("dva")
+        if(cislo_list[0]=="3"):
+            final_str.append("tři")
+        if(cislo_list[0]=="4"):
+            final_str.append("čtyři")
+        if(cislo_list[0]=="5"):
+            final_str.append("pět")
+        if(cislo_list[0]=="6"):
+            final_str.append("šest")
+        if(cislo_list[0]=="7"):
+            final_str.append("sedm")
+        if(cislo_list[0]=="8"):
+            final_str.append("osm")
+        if(cislo_list[0]=="9"):
+            final_str.append("devět")
+
+    return "".join(final_str)
+
+if __name__ == "__main__":
+    cislo = input("Zadej číslo: ")
+    text = cislo_text(cislo)
+    print(text)
