@@ -1,10 +1,18 @@
 def dec_to_bin(cislo):
-    # funkce prevede cislo na binarni reprezentaci (cislo muze byt str i int!!!)
-    # 7 -> "111"
-    # 5 -> "101"
-    return "0"
+    """
+    Funkce převede číslo na binární reprezentaci.
+    Číslo může být předáno jako int nebo str.
+    Výstupem je binární reprezentace jako řetězec.
+    """
+    # Převést cislo na int, pokud je zadané jako str
+    if isinstance(cislo, str):
+        cislo = int(cislo)
+    
+    # Vrátit binární reprezentaci čísla (bez prefixu '0b')
+    return bin(cislo)[2:]
 
 
+# Testovací funkce
 def test_bin_to_dec():
     assert dec_to_bin("0") == "0"
     assert dec_to_bin(1) == "1"
