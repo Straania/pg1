@@ -24,8 +24,40 @@ user_names = {
 }
 
 def fetch_and_save_data():
-    # ZDE NAPIŠTE VÁŠ KÓD
-    pass
+    try:
+        # 1. Odeslání GET požadavku na URL pro stažení dat
+        response = requests.get(url)
+
+        # Kontrola, zda byl požadavek úspěšný
+        if not response.ok:
+            print("Chyba při stahování dat.")  # Pokud selže, vypíšeme chybu
+            return False  # Funkce vrátí False
+
+        # 2. Načtení JSON dat z odpovědi
+        data = response.json()
+
+        # 3. Pro každý záznam v datech:
+        for item in data:
+            # a. Získání userId ze záznamu
+            user_id = item.get("userId")
+            
+            # b. Přidání klíče `userName` podle `userId` z mapy `user_names`
+            # Pokud není `userId` nalezen, použijeme výchozí hodnotu "Unknown"
+            item["userName"] = user_names.get(user_id, "Unknown")
+
+        # 4. Uložení obohacených dat do souboru `data.json`
+        with open("data.json", "w", encoding="utf-8") as f:
+            # a. Uložíme data jako JSON s čitelným formátováním
+            json.dump(data, f, ensure_ascii=False, indent=4)
+
+        # 5. Informace o úspěšném uložení
+        print("Data úspěšně uložena do souboru data.json.")
+        return True  # Funkce vrací True, což signalizuje úspěch
+
+    except Exception as e:
+        # Pokud dojde k chybě, vypíšeme její obsah
+        print(f"Nastala chyba: {e}")
+        return False  # Funkce vrátí False, pokud něco selže
 
 # Pytest testy pro Příklad 2
 from unittest.mock import patch, MagicMock, mock_open
