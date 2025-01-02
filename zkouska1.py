@@ -28,4 +28,5 @@ def test_process_numbers():
     assert process_numbers([7, 8, 10, 12]) == [14, 16]
     assert process_numbers([1, 2, 3, 4]) == []
     assert process_numbers([5, 6, 7, 15]) == [12, 14, 30]  
+    print("Všechny testy prošly!")
 
